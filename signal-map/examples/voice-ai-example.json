@@ -1,0 +1,479 @@
+{
+ "company": "Acme Voice",
+ "title": "Acme Voice Signal Map",
+ "eyebrow": "lemlist signal audit · Acme Voice · Oct 2026",
+ "lede": "Four signals to switch on this week, eight ranked behind them. Acme Voice runs no signals today, so this is a from-scratch setup. Each signal is scored by how directly it exposes a pain Acme Voice already sells against on acmevoice.example: leads that wait hours for a reply, call centers that can't keep up, SMS follow-ups that land in spam, and AI voice projects that stall on compliance.",
+ "specs": [
+  {
+   "k": "ICP",
+   "v": "Lead buyers in insurance, telecom, consumer lending, home services and performance marketing, US, 50 to 5,000 people"
+  },
+  {
+   "k": "Buyer",
+   "v": "VP Marketing Ops, Head of Customer Acquisition, Director of Contact Center, CTO"
+  },
+  {
+   "k": "Competitors",
+   "v": "Retell AI, Bland AI, Vapi, Liberate, and in-house builds"
+  }
+ ],
+ "pains": [
+  {
+   "tag": "SPEED",
+   "title": "Leads wait hours for a reply",
+   "body": "Prospects ask several companies at once and pick whoever answers first. Lakeside Moving' leads used to wait 2 to 3 hours.",
+   "proof": "Lakeside: replies in under 5 s · 92% of qualification automated",
+   "sigs": "hiring frontline roles, new acquisition leader, AI Signals"
+  },
+  {
+   "tag": "CAPACITY",
+   "title": "The call center is the ceiling",
+   "body": "More leads means more seats, and the seats turn over. One telecom ran 2,000+ agents and still hit capacity at peak.",
+   "proof": "Kidsport Gyms: 1,000+ AI calls and 200+ bookings with zero staff in 4 weeks",
+   "sigs": "hiring frontline roles, republished jobs, new office"
+  },
+  {
+   "tag": "CHANNEL",
+   "title": "SMS follow-ups land in spam",
+   "body": "Plain texts from unknown numbers get filtered more every year, and a missed call usually ends the conversation.",
+   "proof": "Telecom: 0 messages flagged by iOS 18 · pro sports team: +60% ticket sales vs SMS",
+   "sigs": "competitor connections, stack change, LinkedIn keywords"
+  },
+  {
+   "tag": "BUILD",
+   "title": "In-house AI voice stalls on compliance",
+   "body": "A working voice demo is quick. Calling windows, consent, Do-Not-Call and reassigned numbers are the long part.",
+   "proof": "Telecom: nearly 2 years in-house, then 2x qualified leads in 13 days",
+   "sigs": "hiring voice AI builders, website visitors, competitor connections"
+  }
+ ],
+ "market": [
+  "<b>Lead buyers compete on the first reply.</b> Insurance, home services, telecom and lending all buy leads that other companies call too. A job post for callback and qualification seats is the clearest budget line in this market, which is why hiring ranks first.",
+  "<b>Acme Voice sells against developer platforms as much as against headcount.</b> Its four comparison pages are Retell, Bland, Vapi and Liberate. Anyone talking to those reps has already decided on AI voice. What's still open is compliance and the follow-up channel.",
+  "<b>SMS is losing reach and RCS is the upgrade.</b> On Acme Voice's webinar with Google, both phone platforms were described as pushing business SMS toward spam folders, and Google counted 275 million RCS-capable US users. Teams with long-running SMS programs are the easiest RCS buyers.",
+  "<b>Two motions share one website.</b> Enterprise lead buyers go through sales. Franchises, dealerships and gyms self-serve on the Free and $149 Startup plans. This map targets the first; the note at the bottom covers the second."
+ ],
+ "signals": [
+  {
+   "n": "Hiring frontline qualification roles",
+   "short": "Hiring frontline roles",
+   "ty": "companyIsHiring",
+   "t": "now",
+   "p": "CAPACITY · SPEED",
+   "ef": 5,
+   "eo": 1,
+   "why": "A company posting Licensed Insurance Agent, Inbound Sales Rep or Appointment Setter roles is paying salaries for the exact work Acme Voice's agents do first: call the lead back, ask the qualifying questions, book the next step. Ten open seats is a budget line with a number on it. These roles also turn over constantly, so the pain comes back every quarter.",
+   "setup": "Titles: <code>Licensed Insurance Agent</code>, <code>Inbound Sales Representative</code>, <code>Call Center Agent</code>, <code>Appointment Setter</code>, <code>Lead Qualification Specialist</code>, <code>Bilingual Sales Agent</code>. Run on the account list, US. Route BPOs and staffing agencies to a separate list, since they post on behalf of clients.",
+   "res": "Lakeside Moving; Kidsport Gyms; the 30+ languages line for bilingual roles"
+  },
+  {
+   "n": "Champion job change",
+   "ty": "jobChange",
+   "t": "now",
+   "p": "ALL FOUR",
+   "ef": 5,
+   "eo": 2,
+   "why": "Acme Voice counts 1,000+ brands, many from the Acme Voice Chat texting years. A marketing ops lead or contact center director who ran Acme Voice agents and moves to another lead buyer already knows what the first two weeks look like. Low volume, highest conversion. Effort is 2 because the champion list has to come out of Acme Voice's CRM first.",
+   "setup": "Signal agent: <code>Contact changed job</code> on a contact list of admins and users at current and past customers, plus RCS webinar registrants. 100 credits per detected move, so cap the daily limit. Moves into a competitor or an agency go to a separate list.",
+   "res": "Their own results; the customer story from their new company's vertical"
+  },
+  {
+   "n": "Website visitors",
+   "ty": "companyEmployeeVisitedMyWebsite",
+   "t": "now",
+   "p": "BUILD · CHANNEL",
+   "ef": 5,
+   "eo": 2,
+   "why": "acmevoice.example is built for evaluators: four comparison pages, a public price list and a live demo that calls the visitor's phone. A company reading the Vapi comparison is choosing between building and buying this quarter. The only signal that needs work outside lemlist.",
+   "setup": "Install the lemlist tracking script on acmevoice.example. Prioritize <code>/alternatives/*</code>, <code>/pricing</code>, <code>/enterprise</code>, <code>/customers/*</code>. Persona: VP Marketing Ops, Head of Customer Acquisition, Director of Contact Center, CTO. Drop current customers and voice AI vendors.",
+   "res": "The matching comparison page; Enterprise page for accounts over 500"
+  },
+  {
+   "n": "Competitor connections",
+   "ty": "competitorConnections",
+   "t": "now",
+   "p": "BUILD · CHANNEL",
+   "ef": 4,
+   "eo": 1,
+   "why": "A new connection with a Bland, Retell or Vapi rep means the team has already decided AI voice is coming. What's still open is who handles TCPA, the voicemail follow-up and RCS, which is where Acme Voice positions itself on every comparison page. Setup is a competitor list and a title filter.",
+   "setup": "Competitors: Retell AI, Bland AI, Vapi, Liberate, plus Synthflow and Regal. Keep business titles (marketing ops, acquisition, contact center, and CTO at companies under 500), since developers connect with Vapi and Retell constantly. Never mention the connection in copy.",
+   "res": "Telecom pilot; the comparison page for that competitor"
+  },
+  {
+   "n": "Hiring voice AI builders",
+   "short": "Voice AI builders",
+   "ty": "companyIsHiring",
+   "t": "next",
+   "p": "BUILD",
+   "ef": 4,
+   "eo": 1,
+   "why": "A lead buyer posting Conversational AI Engineer is about to spend a year building what Acme Voice sells. The telecom in Acme Voice's strongest story spent nearly two years on its own voice agent before switching. Fewer posts than signal 1, but very specific.",
+   "setup": "Titles: <code>Conversational AI Engineer</code>, <code>Voice AI Engineer</code>, <code>AI Agent Engineer</code>, <code>Contact Center AI</code>. Description: <code>Twilio</code>, <code>Vapi</code>, <code>Retell</code>, <code>outbound calling</code>. Account list only, so AI startups don't flood it.",
+   "res": "Telecom pilot; Retell and Vapi comparison pages"
+  },
+  {
+   "n": "New acquisition or contact center leader",
+   "short": "New leader",
+   "ty": "newHire + promotion",
+   "t": "next",
+   "p": "SPEED",
+   "ef": 4,
+   "eo": 1,
+   "why": "A new VP of Customer Acquisition or Contact Center Director inherits a cost per lead and a callback rate in month one. Speed to lead is the cheapest visible fix, and Acme Voice can show it fast: the telecom pilot doubled qualified leads in 13 days.",
+   "setup": "Two watch lists, same titles: <code>VP Marketing Operations</code>, <code>Head of Customer Acquisition</code>, <code>VP Performance Marketing</code>, <code>Director of Contact Center</code>, <code>Head of Lead Generation</code>, <code>VP Sales</code> (insurance agencies only).",
+   "res": "Northgate Auto; Lakeside Moving"
+  },
+  {
+   "n": "Technology change (dialer and lead stack)",
+   "short": "Stack change",
+   "ty": "technologyChange",
+   "t": "next",
+   "p": "CHANNEL · BUILD",
+   "ef": 4,
+   "eo": 2,
+   "why": "Technographics catch the stack Acme Voice plugs into or replaces. A company adopting Jornaya or LeadsPedia buys and routes third-party leads, so TCPA consent is already a line item. A move to or away from Convoso, Five9 or Velocify means the calling setup is being rebuilt.",
+   "setup": "Track adoption or removal of <code>Jornaya</code>, <code>LeadsPedia</code>, <code>Convoso</code>, <code>Five9</code>, <code>Velocify</code>, <code>Twilio Voice</code>, <code>TalkDesk</code>, <code>RingCentral Contact Center</code>. Account list only.",
+   "res": "Lakeside Moving (HubSpot sync); Trust Center"
+  },
+  {
+   "n": "AI Signals",
+   "ty": "customSignals",
+   "t": "next",
+   "p": "ALL FOUR",
+   "ef": 5,
+   "eo": 3,
+   "why": "The most precise signal here, because these companies announce the moments that hurt: a new call center, a launch in new states, a move to RCS. Scores 5 on effectiveness but needs a company list and two or three rounds of prompt tuning.",
+   "setup": "Prompts: <code>announces a new call center or contact center expansion</code>, <code>insurance carrier or agency expands into new states</code>, <code>launches RCS or verified business messaging</code>, <code>is named in a TCPA class action or settles one</code>. The TCPA prompt only raises priority. Never mention a lawsuit in copy.",
+   "res": "Trust Center; telecom pilot; pro sports team for RCS launches"
+  },
+  {
+   "n": "New office opening",
+   "ty": "newOffice",
+   "t": "opp",
+   "p": "CAPACITY",
+   "ef": 3,
+   "eo": 2,
+   "why": "When the new office is a call center, the company is adding seats to keep up with lead volume, which is the moment to show the alternative. Most openings are sales offices or HQ moves, so it needs a quick human check.",
+   "setup": "Account list only. Route to a review queue, not straight into a campaign.",
+   "res": "Kidsport Gyms"
+  },
+  {
+   "n": "LinkedIn keywords",
+   "ty": "linkedinKeywords",
+   "t": "opp",
+   "p": "CHANNEL",
+   "ef": 3,
+   "eo": 3,
+   "why": "Operators do post the pain (\"our texts are getting filtered\", \"10DLC rejected again\"), but so does every texting vendor, dialer and lead gen consultant. Needs ongoing exclusions.",
+   "setup": "Keywords: <code>speed to lead</code>, <code>10DLC</code>, <code>SMS deliverability</code>, <code>carrier filtering</code>, <code>RCS for Business</code>. Exclude vendor and agency accounts.",
+   "res": "RCS webinar with Google and Centerfield"
+  },
+  {
+   "n": "Competitor reactions",
+   "ty": "competitorReactions",
+   "t": "skip",
+   "p": "-",
+   "ef": 2,
+   "eo": 2,
+   "why": "People liking Vapi or Retell posts are mostly developers trying tools, a long way from a lead buyer with a call center. Much higher volume and lower intent than a connection with a rep.",
+   "setup": "If tested: same competitor list as signal 4, business titles only, light nurture sequence.",
+   "res": "The Omni Brain post"
+  },
+  {
+   "n": "Fundraising",
+   "ty": "companyRaisedFunds",
+   "t": "skip",
+   "p": "-",
+   "ef": 2,
+   "eo": 1,
+   "why": "Every vendor emails the week a round is announced, and a raise says nothing about how fast leads get called back. Useful only as a priority bump on accounts that already show signal 1 or 4.",
+   "setup": "Add as a condition on other lists, never its own campaign.",
+   "res": "Enterprise page"
+  }
+ ],
+ "leftOut": "Bombora buying intent (topics like conversational AI surge at every vendor and builder), company page engagement (worth a test on Acme Voice's own page once the first four run), cost cutting (fits on paper, but it fires mostly on layoffs, a bad week for a vendor email), legal issues (TCPA suits fit the pain, so they live in AI Signals as a priority boost only), M&amp;A (agency roll-ups merging call centers, a later AI Signals prompt), GitHub activity (voice framework repos attract developers, not lead buyers), influencer engagement (no clear set of operators this buyer follows), product launches, awards, partnerships, office closings and security incidents. Republished job offers lives inside Play 1 instead of on its own.",
+ "plays": [
+  {
+   "title": "The seat you can't keep filled",
+   "inputs": [
+    "Hiring frontline roles",
+    "Same role reposted 2+ times in 60 days"
+   ],
+   "out": "AE call today",
+   "body": "Turnover makes the case on its own: the role will be open again next quarter. Lead with coverage for the open seats, never with replacing the team.",
+   "meta": "Proof: Kidsport Gyms, 200+ bookings with zero staff in four weeks"
+  },
+  {
+   "title": "Build or buy",
+   "inputs": [
+    "Hiring voice AI builders",
+    "Connection to a Vapi or Retell rep"
+   ],
+   "out": "Telecom story in 48 h",
+   "body": "They've decided on AI voice and are about to build it. Send the CTO the story of a team that spent nearly two years in-house before switching.",
+   "meta": "Proof: telecom pilot, 2x qualified leads in 13 days"
+  },
+  {
+   "title": "Shortlist in progress",
+   "inputs": [
+    "Visit to /alternatives or /pricing",
+    "Competitor connection"
+   ],
+   "out": "AE call today",
+   "body": "Both inside 14 days means a decision this quarter. The call opens on what the other vendor leaves to the buyer: compliance and the follow-up channel.",
+   "meta": "Proof: the alternatives page for that competitor"
+  },
+  {
+   "title": "New owner, new stack",
+   "inputs": [
+    "New acquisition leader",
+    "Dialer or lead stack change in 90 days"
+   ],
+   "out": "Priority tier",
+   "body": "A new leader rebuilding the calling stack picks vendors once. Move the account to the top of the AE's list and run the exec sequence.",
+   "meta": "Proof: Northgate Auto, +25% appointments with the same reps"
+  }
+ ],
+ "run": {
+  "lede": "Nothing runs today, so the order matters more than usual: lists first, four signals, then the rest once the first replies come in.",
+  "steps": [
+   {
+    "title": "Build three lists first",
+    "items": [
+     "Account list: insurance carriers, agencies and MGAs, telecom and ISPs, consumer lending, home services, lead gen and performance marketing. US, 50 to 5,000 people. AI Signals only runs on a company list.",
+     "Champion list: admins and users at current and past customers from Acme Voice's CRM, Acme Voice Chat users from the texting years, RCS webinar registrants.",
+     "Exclusion list: current customers, voice AI vendors, Google and carrier partners."
+    ]
+   },
+   {
+    "title": "Roll out in waves",
+    "items": [
+     "Week 1: signals 1 to 4 on \"auto-create tasks\" so AEs get a short daily list.",
+     "Weeks 2 to 3: add 5 to 7 on manual review, then auto-push to their campaigns. Turn on the stacking plays.",
+     "Month 2: build AI Signals prompts once the account list is clean.",
+     "Cap daily identifications. Job change costs 100 credits per signal."
+    ]
+   },
+   {
+    "title": "Set the baseline in 30 days",
+    "items": [
+     "Replace these effectiveness scores with Acme Voice's own reply and meeting rates per watch list. It's the first real data Acme Voice will have on signals.",
+     "Promote what books meetings, cut the rest."
+    ]
+   }
+  ]
+ },
+ "copy": {
+  "lede": "First-touch emails for the top signals, all written to the same example account so the difference comes from the signal alone. Each one names the trigger, stays in the prospect's world, and closes on a acmevoice.example resource or a live demo instead of a meeting ask.",
+  "example": [
+   {
+    "k": "Example account (fictional)",
+    "v": "Harborline Insurance Group, 600-person independent agency network selling auto and home insurance in Texas, Florida and Georgia. Buys shared leads from two aggregators, runs a 140-seat call center in Tampa, follows up by SMS from a 10DLC number."
+   },
+   {
+    "k": "Why this profile",
+    "v": "Same shape as Acme Voice's insurance and lead gen accounts: it buys leads that competitors also call, and wins on who answers first."
+   },
+   {
+    "k": "Contacts (fictional)",
+    "v": "Dana Whitfield, VP Marketing Operations · Luis Ortega, Director of Contact Center · Priya Shah, Head of Customer Acquisition · Rachel Nguyen, CTO"
+   }
+  ],
+  "mails": [
+   {
+    "sig": 1,
+    "trigger": "Harborline has 14 inbound licensed agent roles open, and the bilingual one is on its third posting.",
+    "to": "Luis Ortega, Director of Contact Center",
+    "subject": "14 open seats",
+    "body": [
+     "Luis,",
+     "Harborline has 14 inbound agent roles open, and the bilingual one is on its third posting.",
+     "In week one, most of what those seats do is call back form fills and ask the same five questions. That part doesn't need a license.",
+     "Lakeside Moving handed it to an AI agent: 92% of qualification automated, every lead answered in under 5 seconds. Their team only takes the qualified calls.",
+     "Want to hear the agent call you the way it would call a Harborline lead, in English or Spanish?"
+    ],
+    "foot": [
+     {
+      "k": "Why it ranks first",
+      "v": "the job post is the budget. The email offers coverage for the seats, never a replacement for the team."
+     },
+     {
+      "k": "Proof for step 2",
+      "v": "Kidsport Gyms, 1,000+ calls handled by AI and 30.8% outbound conversion in four weeks."
+     }
+    ]
+   },
+   {
+    "sig": 2,
+    "trigger": "Dana ran Acme Voice's voice and RCS agents at Brightlane Leads (fictional) and joined Harborline last month.",
+    "to": "Dana Whitfield, VP Marketing Operations",
+    "subject": "same playbook",
+    "body": [
+     "Dana,",
+     "Congrats on the move to Harborline.",
+     "At Brightlane you had agents calling every lead within seconds and RCS picking up after the voicemails. Harborline still follows up with a plain text from a 10DLC number.",
+     "Want a free agent running on one of your lead sources before your first planning cycle? It takes a prompt, not a project."
+    ],
+    "foot": [
+     {
+      "k": "Why it ranks second",
+      "v": "she has already run the playbook. The email only has to remind her."
+     }
+    ]
+   },
+   {
+    "sig": 3,
+    "trigger": "Rachel viewed \"Acme Voice vs Vapi\" and the pricing page twice this week.",
+    "to": "Rachel Nguyen, CTO",
+    "subject": "what you'd build",
+    "body": [
+     "Rachel,",
+     "Teams that start on a developer voice platform usually get a working demo in a week. Then calling windows, consent, Do-Not-Call scrubbing and reassigned numbers land on someone's desk.",
+     "For an insurance call center, that list is most of the project.",
+     "Want the side-by-side Acme Voice wrote against Vapi? It lists what you'd have to build yourself."
+    ],
+    "foot": [
+     {
+      "k": "Rule",
+      "v": "never mention the visit. Send within 24 hours of it."
+     },
+     {
+      "k": "Proof for step 2",
+      "v": "Trust Center (SOC 2 Type II, HIPAA, TCPA) and the telecom pilot."
+     }
+    ]
+   },
+   {
+    "sig": 4,
+    "trigger": "Luis connected with two Bland AI account executives this week.",
+    "to": "Luis Ortega, Director of Contact Center",
+    "subject": "after the voicemail",
+    "body": [
+     "Luis,",
+     "Most voice agents stop at the voicemail. The lead then gets a plain text from a number they don't know, and phones file more of those as spam every year.",
+     "A telecom provider sent that follow-up as a verified, branded RCS message instead. Qualified leads doubled in 13 days, and Apple's spam filter flagged none of their messages.",
+     "Want the write-up? It covers the step a voice-only agent leaves to you."
+    ],
+    "foot": [
+     {
+      "k": "Rule",
+      "v": "never mention the connection. Position Acme Voice on what happens after the call, whichever voice vendor they pick."
+     },
+     {
+      "k": "Proof for step 2",
+      "v": "a pro sports team, +60% ticket sales with RCS against an SMS control group."
+     }
+    ]
+   },
+   {
+    "sig": 6,
+    "trigger": "Priya joined Harborline as Head of Customer Acquisition five weeks ago.",
+    "to": "Priya Shah, Head of Customer Acquisition",
+    "subject": "first 90 days",
+    "body": [
+     "Priya,",
+     "New acquisition leads usually inherit two numbers in month one: cost per lead, and how many of those leads anyone called back in time.",
+     "The second one is the faster fix. Northgate Auto put an AI agent on every lead around the clock and booked 25% more appointments with the same reps. 60% of those appointments turned into sales.",
+     "Want the Northgate story? It makes a good template for a 90-day plan."
+    ],
+    "foot": [
+     {
+      "k": "Proof for step 2",
+      "v": "Lakeside Moving, from a 2 to 3 hour response time to under 5 seconds."
+     }
+    ]
+   },
+   {
+    "sig": 8,
+    "trigger": "Harborline announced it will write policies in North Carolina and Arizona from January. Prompt: \"insurance carrier or agency expands into new states\".",
+    "to": "Dana Whitfield, VP Marketing Operations",
+    "subject": "NC and AZ",
+    "body": [
+     "Dana,",
+     "Saw Harborline starts writing in North Carolina and Arizona in January.",
+     "Two new states usually mean new lead sources, more state calling rules to follow, and a call center sized for three states.",
+     "Acme Voice checks calling windows, consent and Do-Not-Call on every call and text, in 30+ languages, and runs 1,000+ calls at once without new seats.",
+     "Want to hear how the agent handles a lead that comes in after calling hours?"
+    ],
+    "foot": [
+     {
+      "k": "Why the direct reference works here",
+      "v": "the expansion is public, and naming it shows the timing is the reason for the email."
+     }
+    ]
+   }
+  ]
+ },
+ "resources": {
+  "domain": "acmevoice.example",
+  "groups": [
+   {
+    "title": "Customer stories",
+    "items": [
+     {
+      "html": "<a href=\"https://acmevoice.example/customers/lakeside-moving\">Lakeside Moving</a> Moving and storage. 92% of qualification automated, replies in under 5 s, synced to HubSpot.",
+      "use": "Hiring frontline roles · Play 1"
+     },
+     {
+      "html": "<a href=\"https://acmevoice.example/customers/internet-provider\">Internet Provider</a> 2x qualified leads in 13 days, 0 messages flagged by iOS 18, after nearly two years in-house.",
+      "use": "Competitor connections · voice AI builders · Play 2"
+     },
+     {
+      "html": "<a href=\"https://acmevoice.example/customers/northgate-auto\">Northgate Auto</a> +25% appointments, 60% of appointments to sale, 24/7 coverage.",
+      "use": "New acquisition leader · Play 4"
+     },
+     {
+      "html": "<a href=\"https://acmevoice.example/customers/kidsport-gyms\">Kidsport Gyms</a> 1,000+ AI calls, 200+ bookings with zero staff, 30.8% outbound conversion in four weeks.",
+      "use": "New office · Play 1 · franchise accounts"
+     },
+     {
+      "html": "<a href=\"https://acmevoice.example/customers/pro-sports-team\">a pro sports team</a> RCS vs SMS: +60% ticket sales, +20% click-through.",
+      "use": "Channel pain (step 2) · RCS launch prompt"
+     }
+    ]
+   },
+   {
+    "title": "Comparison and proof",
+    "items": [
+     {
+      "html": "<a href=\"https://acmevoice.example/alternatives/retell-ai\">vs Retell AI</a>, <a href=\"https://acmevoice.example/alternatives/bland-ai\">vs Bland AI</a>, <a href=\"https://acmevoice.example/alternatives/vapi\">vs Vapi</a>, <a href=\"https://acmevoice.example/alternatives/liberate\">vs Liberate</a> Compliance, RCS, no-code builder, credit pricing.",
+      "use": "Website visitors · competitor connections (match the competitor)"
+     },
+     {
+      "html": "<a href=\"https://acmevoice.example/enterprise\">Enterprise</a> Under 500 ms latency, 1,000+ concurrent calls, 30+ languages, 99.95% uptime.",
+      "use": "Accounts over 500 people"
+     },
+     {
+      "html": "<a href=\"https://trust.acmevoice.example\">Trust Center</a> SOC 2 Type II, HIPAA, TCPA, GDPR.",
+      "use": "Build pain · step 2 for CTOs"
+     },
+     {
+      "html": "<a href=\"https://acmevoice.example/pricing\">Pricing</a> Free with 100 credits, Startup at $149/mo, Enterprise custom.",
+      "use": "Website visitors · champion CTA"
+     }
+    ]
+   },
+   {
+    "title": "Offers to close on",
+    "items": [
+     {
+      "html": "<a href=\"https://acmevoice.example/\">\"Outbound me\" live demo</a> The prospect enters a number and an agent calls within minutes, no account needed.",
+      "use": "CTA for signals 1, 5 and 8"
+     },
+     {
+      "html": "<a href=\"https://acmevoice.example/pricing\">Free plan</a> 100 credits, agents built in natural language.",
+      "use": "CTA for champions"
+     }
+    ]
+   }
+  ]
+ },
+ "notes": [
+  "Effectiveness scores are judgment from Acme Voice's public positioning, not their reply data. Since Acme Voice runs no signals today, step 3 sets their first real baseline.",
+  "This map covers the sales-led motion. For the self-serve side (franchises, dealerships, gyms), a lighter version works: signal 1 on local businesses with the Free plan as the CTA.",
+  "Synthflow and Regal on the competitor list are my additions. Acme Voice's own comparison pages name only Retell, Bland, Vapi and Liberate. Confirm before setup.",
+  "Every technology in signal 7 resolves in lemlist's technology filter. TrustedForm, the other main consent tool, doesn't, so Jornaya stands in for it.",
+  "Customer names and figures come from acmevoice.example. Confirm the team is comfortable naming Lakeside, Northgate and Kidsport Gyms in cold outreach."
+ ],
+ "footer": "Prepared by [your name]. Signal catalog and technology filter from lemlist on Oct 11, 2026. Acme Voice content from acmevoice.example on the same day. Harborline, Brightlane and their contacts are fictional. Anonymized for the library: Acme Voice and its customers (Lakeside Moving, Northgate Auto, Kidsport Gyms) are stand-in names for a real AI voice agent company and its published case studies; the figures are theirs."
+}

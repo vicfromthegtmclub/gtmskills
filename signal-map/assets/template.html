@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>__TITLE__</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;700;800&family=Public+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: spec-sheet page. Thesis, pains, matrix, ranked signals, stacking plays, run plan, copy, resources, notes. */
+:root{
+  --bg:#F1F3F6; --surface:#FFFFFF; --ink:#141B26; --muted:#5A6576; --line:#D7DCE4;
+  --accent:#1F5F8B; --accent-soft:#DCE8F2; --bet:#A85F17; --bet-soft:#F3E6D6;
+  --fill:#6B7487; --fill-soft:#E5E8EE; --skip:#979DA8; --skip-soft:#EBEDF0;
+  --display:"Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --body:"Public Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#0F141B; --surface:#171E28; --ink:#E5EAF1; --muted:#97A2B3; --line:#2A3442;
+  --accent:#7DB6E0; --accent-soft:#1A2D3E; --bet:#E3A35C; --bet-soft:#3A2A18;
+  --fill:#A3AEC2; --fill-soft:#222A36; --skip:#7C8391; --skip-soft:#1F252E; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#0F141B; --surface:#171E28; --ink:#E5EAF1; --muted:#97A2B3; --line:#2A3442;
+  --accent:#7DB6E0; --accent-soft:#1A2D3E; --bet:#E3A35C; --bet-soft:#3A2A18;
+  --fill:#A3AEC2; --fill-soft:#222A36; --skip:#7C8391; --skip-soft:#1F252E; color-scheme:dark }
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55}
+.wrap{max-width:1080px;margin:0 auto;padding-inline:16px;padding-block:40px 64px;display:flex;flex-direction:column;gap:56px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;letter-spacing:-0.01em}
+h1{font-size:clamp(2rem,5vw,3.1rem);line-height:1.05;font-weight:800}
+h2{font-size:1.6rem;font-weight:700}
+h3{font-size:1.05rem;font-weight:700}
+p{margin:0}
+a{color:var(--accent);text-underline-offset:2px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.lede{max-width:66ch;color:var(--muted);font-size:1.05rem}
+header{display:flex;flex-direction:column;gap:14px}
+.specs{display:flex;flex-wrap:wrap;gap:8px 20px;font-family:var(--mono);font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);padding-top:14px}
+.specs b{color:var(--ink);font-weight:500}
+section{display:flex;flex-direction:column;gap:18px}
+.sec-head{display:flex;flex-direction:column;gap:6px}
+
+.pains{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.pain{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.pain p{font-size:.88rem;color:var(--muted)}
+.pain .proof{font:400 .76rem var(--mono);color:var(--ink)}
+.pain .sigs{font-size:.84rem}
+.ptag{align-self:flex-start;font:600 .7rem var(--mono);letter-spacing:.06em;padding:2px 7px;border-radius:3px;background:var(--ink);color:var(--bg)}
+.market{display:flex;flex-direction:column;gap:8px;max-width:78ch;font-size:.93rem}
+.market ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+
+.matrix-wrap{overflow-x:auto}
+.matrix{display:grid;grid-template-columns:36px repeat(5,minmax(120px,1fr));gap:4px;min-width:680px}
+.ylab,.xlab{font-family:var(--mono);font-size:.75rem;color:var(--muted);display:flex;align-items:center;justify-content:center}
+.xlab{padding-top:6px}
+.cell{min-height:84px;border-radius:4px;padding:8px;display:flex;flex-wrap:wrap;align-content:flex-start;gap:5px}
+.q-win{background:var(--accent-soft)}
+.q-bet{background:var(--bet-soft)}
+.q-fill{background:var(--fill-soft)}
+.q-skip{background:var(--skip-soft)}
+.chip{font:500 .76rem/1.25 var(--body);border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:999px;padding:4px 9px;cursor:pointer;text-align:left}
+.chip.now{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.chip:hover{border-color:var(--ink)}
+.axis-titles{display:flex;justify-content:space-between;font-family:var(--mono);font-size:.75rem;color:var(--muted);min-width:680px;padding-left:40px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.82rem;color:var(--muted)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.sw{width:12px;height:12px;border-radius:2px;display:inline-block}
+
+.rows{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:44px minmax(0,1.1fr) minmax(0,2fr) 128px;gap:14px 18px;padding:18px 4px;border-bottom:1px solid var(--line);scroll-margin-top:20px;transition:background .4s}
+.row.flash{background:var(--accent-soft)}
+.rank{font:500 1.3rem var(--mono);color:var(--muted);font-variant-numeric:tabular-nums}
+.name{display:flex;flex-direction:column;gap:6px;min-width:0}
+.name h3{font-size:1.02rem}
+.tags{display:flex;flex-wrap:wrap;gap:5px}
+.tier{font:600 .7rem var(--mono);letter-spacing:.06em;padding:2px 7px;border-radius:3px}
+.t-now{background:var(--accent);color:var(--bg)}
+.t-next{background:var(--accent-soft);color:var(--accent)}
+.t-opp{background:var(--fill-soft);color:var(--fill)}
+.t-skip{background:transparent;color:var(--skip);border:1px solid var(--line)}
+.ptag2{font:500 .7rem var(--mono);padding:2px 7px;border-radius:3px;border:1px solid var(--line);color:var(--ink)}
+.detail{display:flex;flex-direction:column;gap:8px;min-width:0;font-size:.9rem;margin:0}
+.detail dt{font:500 .7rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.detail dd{margin:0 0 4px}
+.detail code{font-family:var(--mono);font-size:.8rem;background:var(--bg);border:1px solid var(--line);border-radius:3px;padding:0 4px;white-space:normal;word-break:break-word}
+.scores{display:flex;flex-direction:column;gap:10px;font-family:var(--mono);font-size:.74rem;color:var(--muted)}
+.meter{display:flex;gap:3px;margin-top:3px}
+.meter i{width:18px;height:8px;border-radius:1px;background:var(--line)}
+.meter.eff i.on{background:var(--accent)}
+.meter.eft i.on{background:var(--bet)}
+.leftout{font-size:.86rem;color:var(--muted);max-width:86ch}
+.leftout b{color:var(--ink);font-weight:500}
+
+.plays{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}
+.play{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.formula{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font:500 .78rem var(--mono)}
+.formula .s{border:1px solid var(--line);border-radius:999px;padding:3px 8px;background:var(--bg)}
+.formula .op{color:var(--muted)}
+.formula .out{background:var(--ink);color:var(--bg);border-radius:3px;padding:3px 8px}
+.play p{font-size:.88rem}
+.play .meta{font:400 .74rem var(--mono);color:var(--muted)}
+
+.run{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px}
+.step{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.step .n{font:500 .78rem var(--mono);color:var(--accent)}
+.step ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px;font-size:.88rem}
+
+.example{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px 24px;font-size:.88rem;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding-block:14px}
+.example b{display:block;font:500 .7rem var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.mails{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:16px}
+.mail{background:var(--surface);border:1px solid var(--line);border-radius:6px;display:flex;flex-direction:column;min-width:0}
+.mail-head{padding:14px 16px;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:6px}
+.mail-head .row1{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.trigger{font-size:.84rem;color:var(--muted)}
+.to{font:400 .74rem var(--mono);color:var(--muted)}
+.mail-body{padding:16px;display:flex;flex-direction:column;gap:10px;font-size:.92rem;flex:1}
+.subj{font:500 .82rem var(--mono);color:var(--ink)}
+.subj span{color:var(--muted)}
+.mail-foot{padding:12px 16px;border-top:1px solid var(--line);font-size:.82rem;color:var(--muted);display:flex;flex-direction:column;gap:6px}
+.mail-foot strong{color:var(--ink);font-weight:500}
+.copy{font:500 .74rem var(--mono);border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:4px;padding:4px 9px;cursor:pointer;min-height:28px}
+.copy:hover{border-color:var(--ink)}
+
+.res-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:28px 36px}
+.res{display:flex;flex-direction:column;gap:10px;min-width:0}
+.res h3{padding-bottom:8px;border-bottom:1px solid var(--line)}
+.res ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.res li{font-size:.88rem;display:flex;flex-direction:column;gap:2px}
+.res li .use{font:400 .72rem var(--mono);color:var(--muted)}
+.note{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:18px 20px;display:flex;flex-direction:column;gap:8px;font-size:.9rem;max-width:78ch}
+.note ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
+footer{font-size:.8rem;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+
+@media (max-width:720px){
+  .row{grid-template-columns:36px minmax(0,1fr);}
+  .detail,.scores{grid-column:2}
+  .scores{flex-direction:row;flex-wrap:wrap;gap:16px}
+}
+@media (prefers-reduced-motion:reduce){.row{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap" id="app"></div>
+
+<script id="map-data" type="application/json">
+__DATA__
+</script>
+
+<script>
+// Renders the whole page from the JSON block above. Content is author-written HTML.
+const D = JSON.parse(document.getElementById("map-data").textContent);
+const S = D.signals;
+const tierName = {now:"LAUNCH NOW", next:"NEXT", opp:"OPPORTUNISTIC", skip:"SKIP"};
+const pad = i => String(i).padStart(2, "0");
+const label = s => s.short || s.n;
+const quad = (ef, eo) => { if (ef >= 4) return eo <= 2 ? "q-win" : "q-bet"; if (ef <= 2) return "q-skip"; return eo <= 2 ? "q-fill" : "q-skip"; };
+const head = (eyebrow, h2, lede) => `<div class="sec-head"><div class="eyebrow">${eyebrow}</div><h2>${h2}</h2>${lede ? `<p class="lede">${lede}</p>` : ""}</div>`;
+const meter = (v, cls) => `<div class="meter ${cls}">${[1,2,3,4,5].map(i => `<i class="${i <= v ? "on" : ""}"></i>`).join("")}</div>`;
+const nowCount = S.filter(s => s.t === "now").length;
+const co = D.company;
+let html = "";
+
+html += `<header>
+  <div class="eyebrow">${D.eyebrow}</div>
+  <h1>${D.title}</h1>
+  <p class="lede">${D.lede}</p>
+  <div class="specs">${D.specs.map(x => `<span>${x.k} <b>${x.v}</b></span>`).join("")}</div>
+</header>`;
+
+html += `<section>${head("Why these scores", D.painsHeading || `The ${D.pains.length === 4 ? "four" : D.pains.length === 3 ? "three" : D.pains.length === 5 ? "five" : D.pains.length} pains ${co} sells against`, "A signal scores high only when it points at one of these, close to the moment it hurts.")}
+  <div class="pains">${D.pains.map(p => `<div class="pain"><span class="ptag">${p.tag}</span><h3>${p.title}</h3><p>${p.body}</p>${p.proof ? `<p class="proof">${p.proof}</p>` : ""}<p class="sigs">Exposed by: ${p.sigs}</p></div>`).join("")}</div>
+  ${D.market && D.market.length ? `<div class="market"><h3>What the market changes</h3><ul>${D.market.map(m => `<li>${m}</li>`).join("")}</ul></div>` : ""}
+</section>`;
+
+html += `<section>${head("Effort vs effectiveness", "The matrix", `Scores run 1 to 5. Filled chips are the ${nowCount} to launch this week. Click any chip for its setup.`)}
+  <div class="legend">
+    <span><i class="sw" style="background:var(--accent-soft)"></i>Do first</span>
+    <span><i class="sw" style="background:var(--bet-soft)"></i>Worth the build</span>
+    <span><i class="sw" style="background:var(--fill-soft)"></i>Cheap, lower yield</span>
+    <span><i class="sw" style="background:var(--skip-soft)"></i>Skip</span>
+  </div>
+  <div class="matrix-wrap"><div class="axis-titles"><span>Effectiveness ↑</span><span>Effort →</span></div><div class="matrix" id="matrix"></div></div>
+</section>`;
+
+html += `<section>${head("Ranked, with setup", `${S.length} signals, in order`)}
+  <div class="rows">${S.map((s, i) => `
+   <div class="row" id="sig-${i}">
+    <div class="rank">${pad(i + 1)}</div>
+    <div class="name"><h3>${s.n}</h3><div class="tags"><span class="tier t-${s.t}">${tierName[s.t]}</span>${s.p && s.p !== "-" ? `<span class="ptag2">${s.p}</span>` : ""}</div></div>
+    <dl class="detail"><dt>Why for ${co}</dt><dd>${s.why}</dd><dt>Setup</dt><dd>${s.setup}</dd><dt>Use in sequence</dt><dd>${s.res}</dd></dl>
+    <div class="scores"><div>Effectiveness ${s.ef}/5${meter(s.ef, "eff")}</div><div>Effort ${s.eo}/5${meter(s.eo, "eft")}</div></div>
+   </div>`).join("")}</div>
+  ${D.leftOut ? `<p class="leftout"><b>Left out on purpose:</b> ${D.leftOut}</p>` : ""}
+</section>`;
+
+if (D.plays && D.plays.length) html += `<section>${head("Stacking", "Plays that combine signals", "One signal starts a sequence. Two on the same account in the same window get a call that day.")}
+  <div class="plays">${D.plays.map((p, i) => `<div class="play"><h3>${i + 1}. ${p.title}</h3>
+    <div class="formula">${p.inputs.map(x => `<span class="s">${x}</span>`).join('<span class="op">+</span>')}<span class="op">=</span><span class="out">${p.out}</span></div>
+    <p>${p.body}</p>${p.meta ? `<p class="meta">${p.meta}</p>` : ""}</div>`).join("")}</div>
+</section>`;
+
+if (D.run) html += `<section>${head("How we'd run it", "Setup, routing, review", D.run.lede)}
+  <div class="run">${D.run.steps.map((st, i) => `<div class="step"><span class="n">Step ${i + 1}</span><h3>${st.title}</h3><ul>${st.items.map(x => `<li>${x}</li>`).join("")}</ul></div>`).join("")}</div>
+</section>`;
+
+if (D.copy && D.copy.mails && D.copy.mails.length) html += `<section id="copy">${head("Example copy", D.copy.heading || `One account, ${D.copy.mails.length} signals`, D.copy.lede)}
+  <div class="example">${D.copy.example.map(x => `<div><b>${x.k}</b>${x.v}</div>`).join("")}</div>
+  <div class="mails">${D.copy.mails.map((m, i) => { const s = S[m.sig - 1]; return `
+    <article class="mail">
+      <div class="mail-head">
+        <div class="row1"><span class="tier t-${s.t}">${pad(m.sig)} · ${label(s).toUpperCase()}</span><button class="copy" type="button" data-copy="m${i}">Copy</button></div>
+        <p class="trigger">${m.trigger}</p>
+        <span class="to">To: ${m.to}</span>
+      </div>
+      <div class="mail-body" id="m${i}">
+        <p class="subj"><span>Subject:</span> ${m.subject}</p>
+        ${m.body.map(p => `<p>${p}</p>`).join("")}
+      </div>
+      ${m.foot && m.foot.length ? `<div class="mail-foot">${m.foot.map(f => `<p><strong>${f.k}:</strong> ${f.v}</p>`).join("")}</div>` : ""}
+    </article>`; }).join("")}</div>
+</section>`;
+
+if (D.resources) html += `<section>${head(`What's on ${D.resources.domain}`, "Resources to put in the sequences", "Everything public on the site, tagged with the signal or play it pairs with best.")}
+  <div class="res-grid">${D.resources.groups.map(g => `<div class="res"><h3>${g.title}</h3><ul>${g.items.map(it => `<li>${it.html}<span class="use">${it.use}</span></li>`).join("")}</ul></div>`).join("")}</div>
+</section>`;
+
+if (D.notes && D.notes.length) html += `<section><div class="note"><h3>${D.notesTitle || "Before the session"}</h3><ul>${D.notes.map(n => `<li>${n}</li>`).join("")}</ul></div></section>`;
+
+html += `<footer>${D.footer}</footer>`;
+document.getElementById("app").innerHTML = html;
+
+// Matrix: effectiveness rows 5..1, effort columns 1..5
+const m = document.getElementById("matrix");
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+for (let ef = 5; ef >= 1; ef--) {
+  const yl = document.createElement("div"); yl.className = "ylab"; yl.textContent = ef; m.appendChild(yl);
+  for (let eo = 1; eo <= 5; eo++) {
+    const c = document.createElement("div"); c.className = "cell " + quad(ef, eo);
+    S.forEach((s, i) => {
+      if (s.ef !== ef || s.eo !== eo) return;
+      const b = document.createElement("button"); b.type = "button";
+      b.className = "chip" + (s.t === "now" ? " now" : "");
+      b.textContent = (i + 1) + " · " + label(s);
+      b.addEventListener("click", () => {
+        const el = document.getElementById("sig-" + i);
+        el.scrollIntoView({behavior: reduce ? "auto" : "smooth", block: "start"});
+        el.classList.add("flash"); setTimeout(() => el.classList.remove("flash"), 1400);
+      });
+      c.appendChild(b);
+    });
+    m.appendChild(c);
+  }
+}
+m.appendChild(document.createElement("div"));
+for (let eo = 1; eo <= 5; eo++) { const xl = document.createElement("div"); xl.className = "xlab"; xl.textContent = eo; m.appendChild(xl); }
+
+document.querySelectorAll(".copy").forEach(b => b.addEventListener("click", () => {
+  const el = document.getElementById(b.dataset.copy);
+  const text = [...el.querySelectorAll("p")].map(p => p.innerText).join("\n\n");
+  const done = () => { b.textContent = "Copied"; setTimeout(() => b.textContent = "Copy", 1500); };
+  const fallback = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = "Selected"; setTimeout(() => b.textContent = "Copy", 1500); };
+  try { navigator.clipboard.writeText(text).then(done, fallback); } catch (e) { fallback(); }
+}));
+</script>
+</body>
+</html>
